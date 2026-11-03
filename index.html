@@ -1,87 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- //////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ////////////////////////////// Adding last update ////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////// -->
-    <!-- Last commit time display -->
-<div id="last-updated">Loading last update time...</div>
-<!-- Verify Button -->
-<button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
-    Verify Last Modified Time
-</button>
-<script>
-    async function getLastUpdatedTime() {
-        const username = 'FEPSFY7006757';
-        const repo = 'FY7006757';
-       
-        const url = `https://api.github.com/repos/${FEPSFY7006757}/${FY7006757}/commits`;
-        try {
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/vnd.github.v3+json',
-                }
-            });
-            if (!response.ok) {
-                throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
-            }
-            const commits = await response.json();
-            if (commits && commits.length > 0) {
-                const lastCommitDate = new Date(commits[0].commit.committer.date);
-               
-                // Displaying the time on load
-                document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
-            } else {
-                document.getElementById('last-updated').innerText = 'No commits found in the repository.';
-            }
-        } catch (error) {
-            console.error('Error fetching the last updated time:', error);
-            document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
-        }
-    }
-    // Function to verify the last update time by re-fetching it from the API
-    async function verifyLastUpdatedTime() {
-        document.getElementById('last-updated').innerText = 'Verifying...';
-        await getLastUpdatedTime();
-        alert("Last modified time has been successfully verified from GitHub API.");
-    }
-    // Initial load to display the time on page load
-    window.onload = getLastUpdatedTime;
-</script>
-
-
- <!-- //////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ////////////////////////////// Word count function ////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////// -->
-<!-- Placeholder for total word count -->
-<p id="totalWordCount"></p>
-<hr>
-<script>
-  // Function to calculate and display word count for a specified section
-  function displayWordCount(sectionId, outputId) {
-    // Get the text content from the specified section
-    const text = document.getElementById(sectionId).textContent;
-    // Split text into words based on spaces and filter out any empty strings
-    const wordArray = text.trim().split(/\s+/);
-    // Count the words
-    const wordCount = wordArray.length;
-    // Return the word count for summing purposes
-    return wordCount;
-  }
-  // Function to calculate and display total word count from selected sections
-  function displayTotalWordCount() {
-    // Calculate word count for each section and accumulate the total
-    const IntroductionCount = displayWordCount("Introduction_InText");
-    const AnalysisCount = displayWordCount("Analysis_InText");
-    // Calculate the sum of all selected sections
-    const totalWordCount = IntroductionCount + AnalysisCount;
-    // Display the total word count
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
-  }
-  // Run the function for specific sections and display total count when the page loads
-  window.onload = displayTotalWordCount;
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Next-Generation Battery Materials</title>
@@ -116,6 +35,19 @@
       font-family: Calibri, Arial, sans-serif;
     }
 
+    #totalWordCount {
+      max-width: none;
+      margin: 16px 0;
+      padding: 10px 14px;
+      background: #f1f1f1;
+      border-left: 4px solid #356859;
+      font-weight: bold;
+    }
+
+    #last-updated {
+      text-align: center;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 16px;
@@ -130,6 +62,9 @@
     <h2>Student URN: 7006757</h2>
     <hr>
     <h2 class="paper-title">Conference paper: Evaluating the Role of Next-Generation Battery Materials in Improving the Energy Density, Charging Speed and Performance of Electric Vehicle Batteries</h2>
+    <p id="totalWordCount" aria-live="polite">Calculating word count…</p>
+    <div id="last-updated" aria-live="polite">Loading last update time…</div>
+    <button id="verify-update" type="button" style="display:block;margin:10px auto;padding:8px 16px;">Verify Last Modified Time</button>
     <hr>
 
     <h3 id="abstract">Abstract</h3>
@@ -176,26 +111,27 @@
       that the vehicle can travel in one charge and overall performance.
     </p>
     <p>
-      During the charging and discharging cycle, silicon-based anodes experience massive volume fluctuations of around 300%, which 
+      During the charging and discharging cycle, silicon-based anodes experience massive volume fluctuations of around 300%, which
       frequently trigger the breakdown of the solid electrolyte interphase (SEI) film. (Wu, Ge, Wang, Xiong and He, 2025)
-      In severe cases, the risk of internal short circuits and a high operating temperature which can cause and accelerate unwanted 
-      chemical reactions which can produce harmful gases if not contained and will result in battery deteriation.     
+      In severe cases, the risk of internal short circuits and a high operating temperature which can cause and accelerate unwanted
+      chemical reactions which can produce harmful gases if not contained and will result in battery deteriation.
     </p>
     <p>
       These limitations can be overcome by using solid state batteries because they replace the liquid chemical electrolytes with
-      solid alternatives which can improve thermal stability and reduce degradation. "Silicon's theoretical specific capacity is so 
+      solid alternatives which can improve thermal stability and reduce degradation. "Silicon's theoretical specific capacity is so
       much higher (3,400–4,200 mAh/g against graphite's 372 mAh/g) which means its potential energy density is much higher too"
-      (Liam Critchley, 2026). The use of solid state alternatives is essential for extending vehicle battery lifespans, increasing the 
+      (Liam Critchley, 2026). The use of solid state alternatives is essential for extending vehicle battery lifespans, increasing the
       safety and durabilty of batteries and for lowering costs for material replacement.
     </p>
-  <h3>Cost</h3>
-   <p>
+
+    <h3>Cost</h3>
+    <p>
       Although developing this next generation technology will help significantly in many aspects including ecocnomic, environmental and
       ethical approaches, the financial cost is still a huge barrier to the redesigning of the vehicle batteries. Materials such as Lithium,
-     Nickel, Cobalt and Graphite contribute immensely to battery production and beacause of the changes in global supply and demands, the
-     cost of these materials fluctuates regularly. The extraction and refining process of these materials is also a lengthy and costly process
-     which cannot be repeated without spending a large amount of money each time.
-   </p>
+      Nickel, Cobalt and Graphite contribute immensely to battery production and beacause of the changes in global supply and demands, the
+      cost of these materials fluctuates regularly. The extraction and refining process of these materials is also a lengthy and costly process
+      which cannot be repeated without spending a large amount of money each time.
+    </p>
     <p>
       In addition, experimenting and figuring out different battery chemistries is also a costly process because it involves having various
       materials which can be expensive. The production of these chemistries is also tied by cost due to a complex manufacturing process with
@@ -203,32 +139,70 @@
       to expand during charging and discharging can cause a greater cost to maintain a higher level of structural stability.
     </p>
     <p>
-      The economic aspect of developing batteries can be tackled by recycling materials which would reduce the dependence on newly extracted 
-      resources which would support a more sustainable and durable battery chain; this works because the money that would've been spent on 
+      The economic aspect of developing batteries can be tackled by recycling materials which would reduce the dependence on newly extracted
+      resources which would support a more sustainable and durable battery chain; this works because the money that would've been spent on
       extraction is not spent.
     </p>
-    
+
     <h3>Conclusion</h3>
     <p>
-      The development of next-generation batteries provides multiple opportunities to improve the energy density, charging speed and overall 
-      performance of electric vehicle batteries but it is also brings many problems too. Through examining the reliance on raw materials, 
+      The development of next-generation batteries provides multiple opportunities to improve the energy density, charging speed and overall
+      performance of electric vehicle batteries but it is also brings many problems too. Through examining the reliance on raw materials,
       degradation of raw materials and the cost required to produce the batteries, it is clear that certain problems and challenges must be overcome
       first before the technology can be implemented widely.
     </p>
     <p>
-      Although alternative chemistries can be found and could reduce reliance on raw materials, they also have their own technical limitations and 
-      requirements. Furthermore, the chemical reactions that cause battery degredation still remain an obstacle to long-term performance but can be 
+      Although alternative chemistries can be found and could reduce reliance on raw materials, they also have their own technical limitations and
+      requirements. Furthermore, the chemical reactions that cause battery degredation still remain an obstacle to long-term performance but can be
       tackled with solid-state technologies. These solid-state technologies can reduce battery degredation and improve overall battery efficiency.
       However, these technologies also come with a disadvantage, which is a complex manufacturing process and a greater cost.
     </p>
     <p>
       In conclusion, next-generation batteries have the capability to transform the electric vehicle industry but they also come with certain
       limitations and their success in the long term will depend on balancing the development with environmental, reliablility and economic aspects.
-      Future battery research should prioritise the research and development of materials that will deliver the specifics that are required;higher 
-      energy density and faster charging capabilities while minimising degradation, reducing dependence on scarce resources and remaining affordable 
+      Future battery research should prioritise the research and development of materials that will deliver the specifics that are required;higher
+      energy density and faster charging capabilities while minimising degradation, reducing dependence on scarce resources and remaining affordable
       for large-scale production. Acheiving these goals will help in the transition of more suitable green transportation.
     </p>
-  
   </main>
+
+  <script>
+    function updateWordCount() {
+      // Count article paragraphs only, leaving the page title and headings out.
+      const articleText = Array.from(document.querySelectorAll('main > p:not(#totalWordCount)'))
+        .map(paragraph => paragraph.textContent.trim())
+        .join(' ');
+      const words = articleText.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu) || [];
+      document.getElementById('totalWordCount').textContent = `Article word count: ${words.length}`;
+    }
+
+    async function getLastUpdatedTime() {
+      const url = 'https://api.github.com/repos/FEPSFY7006757/FY7006757/commits?per_page=1';
+      const output = document.getElementById('last-updated');
+      try {
+        const response = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } });
+        if (!response.ok) throw new Error(`GitHub API returned ${response.status}`);
+        const commits = await response.json();
+        if (commits.length) {
+          const date = new Date(commits[0].commit.committer.date);
+          output.textContent = `Last Modified Time: ${date.toLocaleString()}`;
+        } else {
+          output.textContent = 'No commits found in the repository.';
+        }
+      } catch (error) {
+        console.error('Error fetching the last updated time:', error);
+        output.textContent = 'Unable to load the last update time.';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateWordCount();
+      getLastUpdatedTime();
+      document.getElementById('verify-update').addEventListener('click', async () => {
+        document.getElementById('last-updated').textContent = 'Verifying…';
+        await getLastUpdatedTime();
+      });
+    });
+  </script>
 </body>
 </html>
