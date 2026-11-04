@@ -92,7 +92,7 @@
     <h2 class="paper-title">Conference paper: Evaluating the Role of Next-Generation Battery Materials in Improving the Energy Density, Charging Speed and Performance of Electric Vehicle Batteries</h2>
     <p id="totalWordCount" aria-live="polite">Calculating word count…</p>
     <div id="last-updated" aria-live="polite">Loading last update time…</div>
-    <button id="verify-update" type="button" style="display:block;margin:10px auto;padding:8px 16px;">Verify Last Modified Time</button>
+    <button id="verify-update" type="button" onclick="verifyLastUpdatedTime()" style="display:block;margin:10px auto;padding:8px 16px;">Verify Last Modified Time</button>
     <hr>
 
     <nav class="table-of-contents" aria-label="Table of contents">
@@ -219,25 +219,44 @@
       const url = 'https://api.github.com/repos/FEPSFY7006757/FY7006757/commits?per_page=1';
       const output = document.getElementById('last-updated');
       try {
-        const response = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } });
-        if (!response.ok) throw new Error(`GitHub API returned ${response.status}`);
-        const commits = await response.json();
-        if (commits.length) {
-          const date = new Date(commits[0].commit.committer.date);
-          output.textContent = `Last Modified Time: ${date.toLocaleString()}`;
-        } else {
-          output.textContent = 'No commits found in the repository.';
+        const response = await fetch(url, {
+          headers: { Accept: 'application/vnd.github+json' },
+          cache: 'no-store'
+        });
+        if (!response.ok) {
+          throw new Error(`GitHub API request failed (${response.status}). This may be a temporary rate limit or network issue.`);
         }
+        const commits = await response.json();
+        const commitDate = commits[0]?.commit?.committer?.date || commits[0]?.commit?.author?.date;
+        if (!commitDate) throw new Error('GitHub did not return a commit date.');
+
+        const date = new Date(commitDate);
+        if (Number.isNaN(date.getTime())) throw new Error('GitHub returned an invalid commit date.');
+        output.textContent = `Last Modified Time: ${date.toLocaleString()}`;
+        return true;
       } catch (error) {
         console.error('Error fetching the last updated time:', error);
-        output.textContent = 'Unable to load the last update time.';
+        output.textContent = `Could not verify the last modified time: ${error.message}`;
+        return false;
+      }
+    }
+
+    async function verifyLastUpdatedTime() {
+      const button = document.getElementById('verify-update');
+      button.disabled = true;
+      button.textContent = 'Verifying…';
+      document.getElementById('last-updated').textContent = 'Checking GitHub for the latest commit…';
+      try {
+        await getLastUpdatedTime();
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Verify Last Modified Time';
       }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       updateWordCount();
       getLastUpdatedTime();
-      document.getElementById('verify-update').addEventListener('click', getLastUpdatedTime);
     });
   </script>
 </body>
