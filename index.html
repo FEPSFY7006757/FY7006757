@@ -48,6 +48,34 @@
       text-align: center;
     }
 
+    .table-of-contents {
+      max-width: 75ch;
+      margin: 24px 0;
+      padding: 16px 24px;
+      background: #f1f1f1;
+      border-left: 4px solid #356859;
+    }
+
+    .table-of-contents h2 {
+      margin-top: 0;
+    }
+
+    .table-of-contents ul {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #245c4b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    h3[id] {
+      scroll-margin-top: 16px;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 16px;
@@ -67,6 +95,17 @@
     <button id="verify-update" type="button" style="display:block;margin:10px auto;padding:8px 16px;">Verify Last Modified Time</button>
     <hr>
 
+    <nav class="table-of-contents" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#reliance-on-raw-materials">Reliance on Raw Materials</a></li>
+        <li><a href="#degradation-of-modern-batteries">Degradation of Modern Batteries</a></li>
+        <li><a href="#cost">Cost</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </nav>
+
     <h3 id="abstract">Abstract</h3>
     <p>
       The future will contain many new materials and devices but how will we charge them, and how will they affect the environment around us?
@@ -80,7 +119,7 @@
       However, silicone's volume will change by 300% during cycles which means they will degrade quickly and won’t last long (QMUL, 2025).
     </p>
 
-    <h3>Reliance on Raw Materials</h3>
+    <h3 id="reliance-on-raw-materials">Reliance on Raw Materials</h3>
     <p>
       The development of battery technologies have created many opportunities to improve the technosphere used in the car industry
       however, this development has relied on the extraction and processing of raw materials from the ground which can harm potential
@@ -104,7 +143,7 @@
       materials can be fully accessed and will benefit the world in the long term.
     </p>
 
-    <h3>Degradation of Modern Batteries</h3>
+    <h3 id="degradation-of-modern-batteries">Degradation of Modern Batteries</h3>
     <p>
       As electric vehicles become more popular, the sustained use of their batteries can become a challenge especially in lithium-ion
       technology where charging and discharging repeatedly degrades the deteriorates the battery capacity which would affect the range
@@ -124,7 +163,7 @@
       safety and durabilty of batteries and for lowering costs for material replacement.
     </p>
 
-    <h3>Cost</h3>
+    <h3 id="cost">Cost</h3>
     <p>
       Although developing this next generation technology will help significantly in many aspects including ecocnomic, environmental and
       ethical approaches, the financial cost is still a huge barrier to the redesigning of the vehicle batteries. Materials such as Lithium,
@@ -144,7 +183,7 @@
       extraction is not spent.
     </p>
 
-    <h3>Conclusion</h3>
+    <h3 id="conclusion">Conclusion</h3>
     <p>
       The development of next-generation batteries provides multiple opportunities to improve the energy density, charging speed and overall
       performance of electric vehicle batteries but it is also brings many problems too. Through examining the reliance on raw materials,
@@ -198,10 +237,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       updateWordCount();
       getLastUpdatedTime();
-      document.getElementById('verify-update').addEventListener('click', async () => {
-        document.getElementById('last-updated').textContent = 'Verifying…';
-        await getLastUpdatedTime();
-      });
+      document.getElementById('verify-update').addEventListener('click', getLastUpdatedTime);
     });
   </script>
 </body>
