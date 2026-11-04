@@ -242,36 +242,40 @@
       <table class="references-table">
         <thead>
           <tr>
-            <th scope="col">In-text citation</th>
-            <th scope="col">Topic cited in the paper</th>
+            <th scope="col">Citation</th>
+            <th scope="col">Reference</th>
+            <th scope="col">Link</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>QMUL (2025)</td>
-            <td>Silicon electrodes, theoretical capacity and charging speed.</td>
+            <td>New research powers next-gen batteries for cheaper, faster-charging and longer-range electric vehicles.</td>
+            <td><a href="https://www.sems.qmul.ac.uk/news/7304/new-research-powers-next-gen-batteries-for-cheaper-faster-charging-and-longer-range-electric-vehicles/" target="_blank" rel="noopener noreferrer">QMUL article</a></td>
           </tr>
           <tr>
             <td>March Zheng (2023)</td>
-            <td>Lithium brine mining and potential water pollution.</td>
+            <td>Lithium brine mining and water pollution risks.</td>
+            <td>Source link to be added</td>
           </tr>
           <tr>
             <td>Wu, Ge, Wang, Xiong and He (2025)</td>
-            <td>Volume changes in silicon-based anodes and SEI film breakdown.</td>
+            <td>Silicon anode degradation and SEI film breakdown.</td>
+            <td>Source link to be added</td>
           </tr>
           <tr>
             <td>Liam Critchley (2026)</td>
-            <td>Specific capacity of silicon compared with graphite.</td>
+            <td>Silicon's theoretical specific capacity compared with graphite.</td>
+            <td>Source link to be added</td>
           </tr>
         </tbody>
       </table>
-      <p class="reference-note">Full publication titles, publication details and source links were not included with the in-text citations. Add those details to make these complete bibliography references.</p>
+      <p class="reference-note">Full publication details and source URLs can be added to complete the bibliography.</p>
     </section>
   </main>
 
   <script>
     function updateWordCount() {
-      // Count article paragraphs only, leaving the page title and headings out.
       const articleText = Array.from(document.querySelectorAll('main > p:not(#totalWordCount)'))
         .map(paragraph => paragraph.textContent.trim())
         .join(' ');
