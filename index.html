@@ -73,7 +73,7 @@
     }
 
     h3[id],
-    .references-table tr[id] {
+    .references-list li[id] {
       scroll-margin-top: 16px;
     }
 
@@ -81,37 +81,26 @@
       margin-top: 40px;
     }
 
-    .references-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0 24px;
+    .references-list {
+      max-width: 85ch;
+      padding-left: 24px;
     }
 
-    .references-table th,
-    .references-table td {
-      border: 1px solid #bbb;
-      padding: 10px 12px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .references-table th {
-      background: #f1f1f1;
+    .references-list li {
+      margin: 0 0 16px;
+      padding-left: 4px;
+      overflow-wrap: anywhere;
     }
 
     .reference-note {
+      max-width: 85ch;
       font-size: 0.95em;
-      color: #444;
+      color: #7a2c20;
     }
 
     @media (max-width: 600px) {
       body {
         padding: 16px;
-      }
-
-      .references-table th,
-      .references-table td {
-        padding: 8px;
       }
     }
   </style>
@@ -150,7 +139,7 @@
       Batteries can be recycled or reused to mitigate raw material mining which not only is innovative but also helps the environment and reduces
       e-waste. One way that the new-gen will evolve is by using silicone instead of lithium-ion because "silicon electrodes can provide 10 times
       higher theoretical capacity and faster charging"
-      However, silicone's volume will change by 300% during cycles which means they will degrade quickly and won’t last long (<a href="#ref-qmul">QMUL, 2025</a>).
+      However, silicone's volume will change by 300% during cycles which means they will degrade quickly and won’t last long (<a href="#ref-qmul">Queen Mary University of London, 2025</a>).
     </p>
 
     <h3 id="reliance-on-raw-materials">Reliance on Raw Materials</h3>
@@ -163,7 +152,7 @@
     <p>
       There are environmental, economic and ethical concerns with mineral mining. "Lithium is typically mined through a process
       called brine mining, which involves extracting lithium from underground saltwater reserves. The risks in polluting local water
-      sources arise here" (<a href="#ref-earth">March Zheng, 2023</a>). There are many examples such as the Salar de Atacama in Chile and are a growing concern
+      sources arise here" (<a href="#ref-earth">Zheng, 2023</a>). There are many examples such as the Salar de Atacama in Chile and are a growing concern
       for the locals living there. The next generation batteries including solid-state, sodium-ion and lithium-sulphur reduce the
       dependancy on these raw materials and will help but these technologies will also introduce their own limitations and requirements.
     </p>
@@ -185,7 +174,7 @@
     </p>
     <p>
       During the charging and discharging cycle, silicon-based anodes experience massive volume fluctuations of around 300%, which
-      frequently trigger the breakdown of the solid electrolyte interphase (SEI) film. (<a href="#ref-wu">Wu, Ge, Wang, Xiong and He, 2025</a>)
+      frequently trigger the breakdown of the solid electrolyte interphase (SEI) film. (Wu et al., 2025)
       In severe cases, the risk of internal short circuits and a high operating temperature which can cause and accelerate unwanted
       chemical reactions which can produce harmful gases if not contained and will result in battery deteriation.
     </p>
@@ -193,7 +182,7 @@
       These limitations can be overcome by using solid state batteries because they replace the liquid chemical electrolytes with
       solid alternatives which can improve thermal stability and reduce degradation. "Silicon's theoretical specific capacity is so
       much higher (3,400–4,200 mAh/g against graphite's 372 mAh/g) which means its potential energy density is much higher too"
-      (<a href="#ref-critchley">Liam Critchley, 2026</a>). The use of solid state alternatives is essential for extending vehicle battery lifespans, increasing the
+      (<a href="#ref-evinfra">EV Infrastructure News, n.d.</a>). The use of solid state alternatives is essential for extending vehicle battery lifespans, increasing the
       safety and durabilty of batteries and for lowering costs for material replacement.
     </p>
 
@@ -240,43 +229,13 @@
 
     <section class="references" aria-labelledby="references">
       <h2 id="references">References</h2>
-      <table class="references-table">
-        <thead>
-          <tr>
-            <th scope="col">Author(s)</th>
-            <th scope="col">Year</th>
-            <th scope="col">Title</th>
-            <th scope="col">Source</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="ref-qmul">
-            <td>Queen Mary University of London (QMUL)</td>
-            <td>2025</td>
-            <td>New research powers next-gen batteries for cheaper, faster-charging and longer-range electric vehicles.</td>
-            <td><a href="https://www.sems.qmul.ac.uk/news/7304/new-research-powers-next-gen-batteries-for-cheaper-faster-charging-and-longer-range-electric-vehicles/" target="_blank" rel="noopener noreferrer">Queen Mary University of London</a></td>
-          </tr>
-          <tr id="ref-earth">
-            <td>Earth.org</td>
-            <td>2023</td>
-            <td>Lithium and cobalt mining: environmental and social impacts.</td>
-            <td><a href="https://earth.org/lithium-and-cobalt-mining/" target="_blank" rel="noopener noreferrer">Earth.org</a></td>
-          </tr>
-          <tr id="ref-wu">
-            <td>Wu, X., Ge, Y., Wang, J., Xiong, R. and He, J.</td>
-            <td>2025</td>
-            <td>Silicon anode degradation and solid electrolyte interphase film breakdown.</td>
-            <td><a href="https://www.sciencedirect.com/science/article/abs/pii/S2468606925003326" target="_blank" rel="noopener noreferrer">ScienceDirect</a></td>
-          </tr>
-          <tr id="ref-critchley">
-            <td>Critchley, L.</td>
-            <td>2026</td>
-            <td>Silicon vs graphite anodes.</td>
-            <td><a href="https://www.evinfrastructurenews.com/ev-battery/silicon-vs-graphite-anodes" target="_blank" rel="noopener noreferrer">EV Infrastructure News</a></td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="reference-note">Harvard-style format: author(s), year, title, source, and link.</p>
+      <ol class="references-list">
+        <li id="ref-evinfra">EV Infrastructure News (n.d.) ‘Silicon vs. graphite anodes: the future of EV battery technology’. Available at: <a href="https://www.evinfrastructurenews.com/ev-battery/silicon-vs-graphite-anodes" target="_blank" rel="noopener noreferrer">https://www.evinfrastructurenews.com/ev-battery/silicon-vs-graphite-anodes</a> (Accessed: 4 November 2026).</li>
+        <li id="ref-qmul">Queen Mary University of London, School of Engineering and Materials Science (2025) ‘New research powers next-gen batteries for cheaper, faster-charging and longer-range electric vehicles’, 27 October. Available at: <a href="https://www.sems.qmul.ac.uk/news/7304/new-research-powers-next-gen-batteries-for-cheaper-faster-charging-and-longer-range-electric-vehicles/" target="_blank" rel="noopener noreferrer">https://www.sems.qmul.ac.uk/news/7304/new-research-powers-next-gen-batteries-for-cheaper-faster-charging-and-longer-range-electric-vehicles/</a> (Accessed: 4 November 2026).</li>
+        <li id="ref-sciencedirect">Naan, M.G., Piasecki, M.A., Meyer, M.G. and Menczer, F. (2025) ‘Ranking for engagement: how social media algorithms fuel misinformation and polarization’, <i>Patterns</i>, 6(9), article 101953. Available at: <a href="https://doi.org/10.1016/j.patter.2025.101953" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.patter.2025.101953</a> (Accessed: 4 November 2026).</li>
+        <li id="ref-earth">Zheng, M. (2023) ‘The environmental impacts of lithium and cobalt mining’, <i>Earth.Org</i>, 31 March. Available at: <a href="https://earth.org/lithium-and-cobalt-mining/" target="_blank" rel="noopener noreferrer">https://earth.org/lithium-and-cobalt-mining/</a> (Accessed: 4 November 2026).</li>
+      </ol>
+      <p class="reference-note"><strong>Source check needed:</strong> The ScienceDirect URL supplied resolves to an article about social-media misinformation, not silicon anodes or battery degradation. It cannot support the in-text citation ‘Wu et al., 2025’. Replace it with the correct battery-research URL and verified publication details. The EV Infrastructure News page does not clearly show a named author or publication date, so it is cited under the organisation name as ‘n.d.’ (no date).</p>
     </section>
   </main>
 
