@@ -76,9 +76,41 @@
       scroll-margin-top: 16px;
     }
 
+    .references {
+      margin-top: 40px;
+    }
+
+    .references-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+
+    .references-table th,
+    .references-table td {
+      border: 1px solid #bbb;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .references-table th {
+      background: #f1f1f1;
+    }
+
+    .reference-note {
+      font-size: 0.95em;
+      color: #444;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 16px;
+      }
+
+      .references-table th,
+      .references-table td {
+        padding: 8px;
       }
     }
   </style>
@@ -103,6 +135,7 @@
         <li><a href="#degradation-of-modern-batteries">Degradation of Modern Batteries</a></li>
         <li><a href="#cost">Cost</a></li>
         <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#references">References</a></li>
       </ul>
     </nav>
 
@@ -203,6 +236,37 @@
       energy density and faster charging capabilities while minimising degradation, reducing dependence on scarce resources and remaining affordable
       for large-scale production. Acheiving these goals will help in the transition of more suitable green transportation.
     </p>
+
+    <section class="references" aria-labelledby="references">
+      <h2 id="references">References</h2>
+      <table class="references-table">
+        <thead>
+          <tr>
+            <th scope="col">In-text citation</th>
+            <th scope="col">Topic cited in the paper</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>QMUL (2025)</td>
+            <td>Silicon electrodes, theoretical capacity and charging speed.</td>
+          </tr>
+          <tr>
+            <td>March Zheng (2023)</td>
+            <td>Lithium brine mining and potential water pollution.</td>
+          </tr>
+          <tr>
+            <td>Wu, Ge, Wang, Xiong and He (2025)</td>
+            <td>Volume changes in silicon-based anodes and SEI film breakdown.</td>
+          </tr>
+          <tr>
+            <td>Liam Critchley (2026)</td>
+            <td>Specific capacity of silicon compared with graphite.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="reference-note">Full publication titles, publication details and source links were not included with the in-text citations. Add those details to make these complete bibliography references.</p>
+    </section>
   </main>
 
   <script>
